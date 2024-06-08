@@ -3,7 +3,7 @@
 FROM node:18-alpine as base
 
 FROM base AS deps
-RUN apk --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json* ./

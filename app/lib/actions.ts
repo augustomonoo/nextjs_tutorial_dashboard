@@ -7,7 +7,7 @@ import { z } from "zod";
 
 export type State = {
   errors?: {
-    customerId: string[];
+    customerId?: string[];
     amount?: string[];
     status?: string[];
   };
@@ -36,7 +36,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Missing fields. Failed to Create Invoice."
-    }
+    };
   }
   const { customerId, amount, status } = validatedFields.data;
   const amountInCents = amount * 100;
@@ -91,7 +91,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 }
 
 export async function deleteInvoice(id: string) {
-  throw new Error("Sup");
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
     revalidatePath('/dashboard/invoices');

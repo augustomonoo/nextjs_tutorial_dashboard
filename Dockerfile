@@ -10,7 +10,7 @@ RUN adduser -S nextjs -u 1001
 COPY . .
 RUN npm ci
 RUN npm run build
-RUN chwon -R nextjs:nodejs .
+RUN chown -R nextjs:nodejs .
 
 USER nextjs
 CMD npm run start

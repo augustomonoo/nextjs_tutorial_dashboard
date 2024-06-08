@@ -7,6 +7,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN apk add --no-cache libc6-compat
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
+RUN chown nextjs:nodejs .
 COPY --chown=nextjs:nodejs . . 
 USER nextjs
 RUN npm ci

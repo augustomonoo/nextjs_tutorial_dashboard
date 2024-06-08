@@ -1,6 +1,6 @@
 # Docker file from
 # https://github.com/vercel/next.js/tree/canary/examples/with-docker
-FROM node:18-alpine as builder
+FROM node:18-alpine as base
 
 FROM base AS deps
 RUN apk --no-cache libc6-compat
